@@ -11,7 +11,7 @@ En tant qu'utilisateur du service, je désire erffectuer une offre sur un produi
 ```ts
 {
   buyerId: string,
-  amount: number // max 2 decimals
+  amount: number // arrondi à 2 décimales
 }
 ```
 
@@ -27,3 +27,4 @@ En tant qu'utilisateur du service, je désire erffectuer une offre sur un produi
 | `buyerId` inexistant                      | 404    | `BUYER_NOT_FOUND`   |
 | `amount` format invalide, pas assez élevé | 400    | `INVALID_AMOUNT`    |
 | enchère terminée                          | 400    | `BIDDING_CLOSED`    |
+| champs vide                               | 400    | `MISSING_FIELD`     |

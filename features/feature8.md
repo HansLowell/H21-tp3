@@ -6,13 +6,13 @@ En tant qu'acheteur, j'aimerais pouvoir coter un vendeur afin de montrer s'il es
 
 ## Requête
 
-`HTTP POST /seller/{id}/review`
+`HTTP POST /seller/{sellerId}/review`
 
 ```ts
 {
   buyerId: string,
   rating: number, // min 0, max 5, integer
-  comment: string // max 200 caractères
+  comment: string
 }
 ```
 
@@ -24,4 +24,13 @@ Headers:
   Location: string
 ```
 
-... où le header `Location` contient l'URL vers le user (`http://localhost:8080/api/seller/{sellerId}/reviews/{reviewId}`)
+... où le header `Location` contient l'URL vers la review. (`<host>/api/seller/{sellerId}/review/{reviewId}`)
+
+## Exceptions
+
+| condition             | status | erreur             |
+| --------------------- | ------ | ------------------ |
+| `sellerId` inexistant | 404    | `SELLER_NOT_FOUND` |
+| `buyerId` inexistant  | 404    | `BUYER_NOT_FOUND`  |
+| `rating` invalide     | 400    | `INVALID_RATING`   |
+| champs vide           | 400    | `MISSING_FIELD`    |

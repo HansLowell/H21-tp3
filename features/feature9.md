@@ -6,14 +6,15 @@ En tant qu'acheteur, j'aimerais pouvoir accéder à une review d'un vendeur afin
 
 ## Requête
 
-`HTTP GET /seller/{sellerId}/reviews/{reviewId}`
+`HTTP GET /seller/{sellerId}/review/{reviewId}`
 
 ## Réponse
 
 `HTTP 200 OK`
+
 ```ts
 {
-  rating: number, // max 2 decimals, from 0 to 5
+  rating: number, // arrondi à 2 décimales
   comment: string
 }
 ```

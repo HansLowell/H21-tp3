@@ -7,9 +7,10 @@ En tant qu'utilisateur du service, j'aimerais pouvoir me créer un compte achete
 ## Requête
 
 `HTTP POST /buyer`
+
 ```ts
 {
-  name: string, // max 30 caractères
+  name: string,
   birthDate: datetime, // ISO-8601 at UTC
 }
 ```
@@ -22,11 +23,11 @@ Headers:
   Location: string
 ```
 
-... où le header `Location` contient l'URL vers le nouveau utilisateur (`http://localhost:8080/api/buyer/{buyerId}`)
+... où le header `Location` contient l'URL vers le nouveau acheteur (`<host>/api/buyer/{buyerId}`)
 
 ## Exceptions
 
 | condition            | status | erreur             |
 | -------------------- | ------ | ------------------ |
-| `name` trop long     | 400    | `TEXT_TOO_LONG`    |
 | `birthDate` invalide | 400    | `INVALID_DATETIME` |
+| champs vide          | 400    | `MISSING_FIELD`    |
