@@ -11,22 +11,24 @@ En tant qu'utilisateur du service, j'aimerais pouvoir accéder aux détails d'un
 ## Réponse
 
 `HTTP 200 OK`
+
 ```ts
 {
   id: string,
   name: string,
   birthDate: datetime, // ISO-8601 at UTC
   offers: [
+    // Les offres des "productsObtained" ne doivent PAS s'afficher ici
     {
       productId: string,
-      amount: number // 2 decimals
+      amount: number // 2 decimals, montant de l'offre et non du produit
     }
   ],
   productsObtained: [
     {
       productId: string,
       expirationDate: datetime, // 30 jours après le endTime du produit
-      price: number // 2 decimals
+      price: number // 2 decimals, montant final du produit == montant de l'offre
     }
   ]
 }

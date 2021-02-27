@@ -26,5 +26,5 @@ En tant qu'utilisateur du service, je désire erffectuer une offre sur un produi
 | `productId` inexistant                    | 404    | `PRODUCT_NOT_FOUND` |
 | `buyerId` inexistant                      | 404    | `BUYER_NOT_FOUND`   |
 | `amount` format invalide, pas assez élevé | 400    | `INVALID_AMOUNT`    |
-| enchère terminée                          | 400    | `BIDDING_CLOSED`    |
+| enchère terminée                          | 400    | `BIDDING_ENDED`     |
 | champs vide                               | 400    | `MISSING_FIELD`     |

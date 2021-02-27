@@ -23,7 +23,7 @@ Headers:
   Location: string
 ```
 
-... où le header `Location` contient l'URL vers le nouveau acheteur (`<host>/api/buyer/{buyerId}`)
+... où le header `Location` contient l'URL vers le nouvel acheteur (`<host>/api/buyer/{buyerId}`)
 
 ## Exceptions
 
