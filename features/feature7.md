@@ -1,41 +1,37 @@
-# Feature 7 - Affichage d'un acheteur
+# Feature 7 - Ajout d'une offre
 
 ## Description
 
-En tant qu'utilisateur du service, j'aimerais pouvoir accéder aux détails d'un acheteur.
+En tant qu'utilisateur du service, je désire erffectuer une offre sur un produit dans le but d'avoir une chance de l'obtenir.
+
+## Critères de succès
+
+| critère | description                                                       |
+| ------- | ----------------------------------------------------------------- |
+| C1      | Si succès, met à jour le `currentPrice` du produit                |
+| C2      | Si succès, apparait dans la liste d'offres `offers` de l'acheteur |
 
 ## Requête
 
-`GET /buyer/{buyerId}`
-
-## Réponse
-
-`HTTP 200 OK`
+`POST /inventory/{productId}/offer`
 
 ```ts
 {
-  id: string,
-  name: string,
-  birthDate: datetime, // ISO-8601 at UTC
-  offers: [
-    // Les offres des "productsObtained" ne doivent PAS s'afficher ici
-    {
-      productId: string,
-      amount: number // 2 decimals, montant de l'offre et non du produit
-    }
-  ],
-  productsObtained: [
-    {
-      productId: string,
-      expirationDate: datetime, // 30 jours après le endTime du produit
-      price: number // 2 decimals, montant final du produit == montant de l'offre
-    }
-  ]
+  buyerId: string,
+  amount: number // arrondi à 2 décimales
 }
 ```
 
+## Réponse
+
+`HTTP 201 CREATED`
+
 ## Exceptions
 
-| condition            | status | erreur            |
-| -------------------- | ------ | ----------------- |
-| `buyerId` inexistant | 404    | `BUYER_NOT_FOUND` |
+| condition                                 | status | erreur              |
+| ----------------------------------------- | ------ | ------------------- |
+| `productId` inexistant                    | 404    | `PRODUCT_NOT_FOUND` |
+| `buyerId` inexistant                      | 404    | `BUYER_NOT_FOUND`   |
+| `amount` format invalide, pas assez élevé | 400    | `INVALID_AMOUNT`    |
+| enchère terminée                          | 400    | `BIDDING_ENDED`     |
+| champs vide                               | 400    | `MISSING_FIELD`     |

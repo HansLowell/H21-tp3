@@ -1,36 +1,41 @@
-# Feature 8 - Ajout d'une review
+# Feature 8 - Affichage d'un acheteur
 
 ## Description
 
-En tant qu'acheteur, j'aimerais pouvoir coter un vendeur afin de montrer s'il est digne de confiance ou non.
+En tant qu'utilisateur du service, j'aimerais pouvoir accéder aux détails d'un acheteur.
 
 ## Requête
 
-`HTTP POST /seller/{sellerId}/review`
-
-```ts
-{
-  buyerId: string,
-  rating: number, // min 0, max 5, integer
-  comment: string
-}
-```
+`GET /buyer/{buyerId}`
 
 ## Réponse
 
-```
-HTTP 201 CREATED
-Headers:
-  Location: string
-```
+`HTTP 200 OK`
 
-... où le header `Location` contient l'URL vers la review. (`<host>/api/seller/{sellerId}/review/{reviewId}`)
+```ts
+{
+  id: string,
+  name: string,
+  birthDate: datetime, // ISO-8601 at UTC
+  offers: [
+    // Les offres des "productsObtained" ne doivent PAS s'afficher ici
+    {
+      productId: string,
+      amount: number // 2 decimals, montant de l'offre et non du produit
+    }
+  ],
+  productsObtained: [
+    {
+      productId: string,
+      expirationDate: datetime, // 30 jours après le endTime du produit
+      price: number // 2 decimals, montant final du produit == montant de l'offre
+    }
+  ]
+}
+```
 
 ## Exceptions
 
-| condition             | status | erreur             |
-| --------------------- | ------ | ------------------ |
-| `sellerId` inexistant | 404    | `SELLER_NOT_FOUND` |
-| `buyerId` inexistant  | 404    | `BUYER_NOT_FOUND`  |
-| `rating` invalide     | 400    | `INVALID_RATING`   |
-| champs vide           | 400    | `MISSING_FIELD`    |
+| condition            | status | erreur            |
+| -------------------- | ------ | ----------------- |
+| `buyerId` inexistant | 404    | `BUYER_NOT_FOUND` |
