@@ -2,7 +2,7 @@
 
 ## Description
 
-En tant qu'utilisateur du service, j'aimerais pouvoir accéder aux détails d'un acheteur.
+En tant qu'acheteur, je peux accéder aux détails de mon compte afin d'y suivre mes offres.
 
 ## Requête
 
@@ -16,23 +16,32 @@ En tant qu'utilisateur du service, j'aimerais pouvoir accéder aux détails d'un
 {
   id: string,
   name: string,
-  birthDate: datetime, // ISO-8601 at UTC
-  offers: [
-    // Les offres des "productsObtained" ne doivent PAS s'afficher ici
+  biddingOffers: [
     {
       productId: string,
-      amount: number // 2 decimals, montant de l'offre et non du produit
+      amount: number, // arrondis MAX 2 decimals, montant de l'OFFRE et non du produit
+      createdAt: datetime, // Date de création de l'OFFRE, pas du produit. ISO-8601 at UTC. exemple: "2020-01-01T00:00:00Z"
+      biddingStatus: "ongoing" | "ended" // selon la date de fin de l'enchère sur le produit
     }
   ],
-  productsObtained: [
+  obtainedProducts: [
     {
       productId: string,
-      expirationDate: datetime, // 30 jours après le endTime du produit
-      price: number // 2 decimals, montant final du produit == montant de l'offre
+      obtainedAt: datetime // ISO-8601 at UTC. exemple: "2020-01-01T00:00:00Z"
     }
-  ]
+  }
 }
 ```
+
+## Critères de succès
+
+| critère | description                                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------------------------- |
+| C1      | Toutes les offres valides effectuées par un acheteur sur un produit se retrouvent dans le champs `offers`.                |
+| C2      | Le `biddingStatus` des offres sur les enchères de produit en court est `ongoing`.                                         |
+| C3      | Une fois l'enchère d'un produit terminée, le `biddingStatus` des offres sur ce produit devient `ended`.                   |
+| C4      | Lorsqu'une enchère se termine, une entrée correspondante à la dernière offre est créée dans le champs `obtainedProducts`. |
+| C5      | Des tests E2E sur le contenu de `obtainedProducts` ne sont pas nécéssaires.                                               |
 
 ## Exceptions
 

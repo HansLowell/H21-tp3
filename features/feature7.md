@@ -2,14 +2,15 @@
 
 ## Description
 
-En tant qu'utilisateur du service, je désire erffectuer une offre sur un produit dans le but d'avoir une chance de l'obtenir.
+En tant qu'acheteur, je peux faire une offre sur un produit.
 
 ## Critères de succès
 
-| critère | description                                                       |
-| ------- | ----------------------------------------------------------------- |
-| C1      | Si succès, met à jour le `currentPrice` du produit                |
-| C2      | Si succès, apparait dans la liste d'offres `offers` de l'acheteur |
+| critère | description                                            |
+| ------- | ------------------------------------------------------ |
+| C1      | Met à jour le `currentPrice` du produit                |
+| C2      | Apparait dans la liste d'offres `offers` de l'acheteur |
+| C3      | Soulève une erreur si l'enchère est terminée           |
 
 ## Requête
 
@@ -18,7 +19,7 @@ En tant qu'utilisateur du service, je désire erffectuer une offre sur un produi
 ```ts
 {
   buyerId: string,
-  amount: number // arrondi à 2 décimales
+  amount: number
 }
 ```
 

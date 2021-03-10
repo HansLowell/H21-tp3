@@ -2,7 +2,13 @@
 
 ## Description
 
-En tant qu'utilisateur du service, j'aimerais pouvoir me créer un compte acheteur afin de placer des offres sur des produits.
+En tant qu'utilisateur du service, je peux me créer un compte acheteur.
+
+## Critères de succès
+
+| critère | description                     |
+| ------- | ------------------------------- |
+| C1      | L'utilisateur doit avoir 18 ans |
 
 ## Requête
 
@@ -11,7 +17,7 @@ En tant qu'utilisateur du service, j'aimerais pouvoir me créer un compte achete
 ```ts
 {
   name: string,
-  birthDate: datetime, // ISO-8601 at UTC
+  birthDate: datetime, // ISO-8601 DATE ONLY, ex: "1990-12-31"
 }
 ```
 
@@ -27,7 +33,7 @@ Headers:
 
 ## Exceptions
 
-| condition            | status | erreur             |
-| -------------------- | ------ | ------------------ |
-| `birthDate` invalide | 400    | `INVALID_DATETIME` |
-| champs vide          | 400    | `MISSING_FIELD`    |
+| condition            | status | erreur          |
+| -------------------- | ------ | --------------- |
+| `birthDate` invalide | 400    | `INVALID_DATE`  |
+| champs vide          | 400    | `MISSING_FIELD` |
