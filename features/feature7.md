@@ -6,11 +6,11 @@ En tant qu'acheteur, je peux faire une offre sur un produit.
 
 ## Critères de succès
 
-| critère | description                                            |
-| ------- | ------------------------------------------------------ |
-| C1      | Met à jour le `currentPrice` du produit                |
-| C2      | Apparait dans la liste d'offres `offers` de l'acheteur |
-| C3      | Soulève une erreur si l'enchère est terminée           |
+| critère | description                                                    |
+| ------- | -------------------------------------------------------------- |
+| C1      | L'offre met à jour le `currentPrice` du produit                |
+| C2      | L'offre apparait dans la liste d'offres `offers` de l'acheteur |
+| C3      | Erreur si l'enchère est terminée                               |
 
 ## Requête
 
