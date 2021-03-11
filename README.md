@@ -5,7 +5,7 @@
 ## Objectifs
 
 - Utiliser des outils de planification et de gestion efficacement et de façon organisée
-- Écrire des stories afin d'énoncé des ajouts de features
+- Écrire des stories afin d'énoncer des ajouts de features
 - Ajouter des nouvelles fonctionnalités à partir de récits utilisateurs
 - Configurer un déploiement continue de A à Z
 
@@ -49,7 +49,7 @@ De plus, vous devez implémenter les mêmes types de tests que pour le TP2 ainsi
 
 ## Partie 4 - Déploiement (40%)
 
-Votre application étant maintenant entièrement fonctionnelle, il est temps de la déployer sur les Internets! Par contre, plusieurs étapes préliminaires sont requises. Ne vous découragez pas si des bugs persistes, c'est une partie qui peut être difficile!
+Votre application étant maintenant entièrement fonctionnelle, il est temps de la déployer sur les Internets! Par contre, plusieurs étapes préliminaires sont requises. Ne vous découragez pas si des bugs persistent, c'est une partie qui peut être difficile!
 
 ### 4.1 - Création d'un pipeline sur Heroku
 
