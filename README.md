@@ -5,8 +5,8 @@
 ## Objectifs
 
 - Utiliser des outils de planification et de gestion efficacement et de façon organisée
-- Écrire des stories afin d'énoncer des ajouts de features
-- Ajouter des nouvelles fonctionnalités à partir de récits utilisateurs
+- Écrire des récits utilisateurs afin d'énoncer des ajouts de features
+- Ajouter des nouvelles fonctionnalités à partir d'un énoncé
 - Configurer un déploiement continue de A à Z
 
 ## Partie 1 - Outils de planification (10%)
@@ -20,17 +20,17 @@
 
 ## Partie 2 - Écriture de stories (10%)
 
-:scroll: Écrivez, dans votre fichier `tp3.md`, **8** récits utilisateurs de features ou améliorations que vous aimeriez implémenter dans votre projet. Assurez-vous de respecter les critères suivants:
+:scroll: Écrivez, dans votre fichier `tp3.md`, **8** récits utilisateurs de nouvelles features ou améliorations que vous aimeriez implémenter dans votre projet. Assurez-vous de respecter les points suivants:
 
 - Niveau de complexité adéquat (faisable tout en demandant un certain effort)
-- Les critères INVEST
-- Des critères/conditions de succès (tests)
+- Respect des critères INVEST
+- Présence de critères/conditions de succès (tests)
 
-Également, vous n'avez pas besoin de :
+Également, évitez :
 
-- Suivre le format des features dans les énoncés (ce ne sont pas des récits utilisateurs)
-- D'indiquer un pointage
-- D'implémenter ces features (réservé pour le TP4)
+- de suivre le format des features dans les énoncés (ce ne sont pas des récits utilisateurs)
+- d'indiquer un pointage
+- d'implémenter ces features (réservé pour le TP4)
 
 ## Partie 3 - Code (40%)
 
@@ -38,10 +38,13 @@ Pour cette partie, vous devez développer les features et refactors demandés. L
 
 De plus, vous devez implémenter les mêmes types de tests que pour le TP2 ainsi que respecter les retours d'exceptions demandés.
 
-### Features et refactors
+### Refactors
 
 - [Refactor 1](./features/refactor1.md)
 - [Refactor 2](./features/refactor2.md)
+
+### Features
+
 - [Feature 6](./features/feature6.md)
 - [Feature 7](./features/feature7.md)
 - [Feature 8](./features/feature8.md)
@@ -51,7 +54,11 @@ De plus, vous devez implémenter les mêmes types de tests que pour le TP2 ainsi
 
 Votre application étant maintenant entièrement fonctionnelle, il est temps de la déployer sur les Internets! Par contre, plusieurs étapes préliminaires sont requises. Ne vous découragez pas si des bugs persistent, c'est une partie qui peut être difficile!
 
-### 4.1 - Création d'un pipeline sur Heroku
+:warning: **IMPORTANT**: Seulement **1** personne de l'équipe peut effectuer cette partie, à moins que vous osiez fournir une carte de crédit. Il est donc **fortement encouragé** de le faire via des rencontres en direct, du pair programming ou donner une formation au reste de l'équipe. Il est **très important** que chaque membre puisse participer à toutes les parties du projet. 
+
+Bien évidement, on ne demande qu'**un seul pipeline** de déploiement **par équipe**.
+
+### 4.1 - Création d'un pipeline d'environnements
 
 Vous devez créer un pipeline de déploiement sur Heroku comprenant les 2 environnements suivants:
 
@@ -60,11 +67,13 @@ Vous devez créer un pipeline de déploiement sur Heroku comprenant les 2 enviro
 
 Vous devrez donc créer 2 applications Heroku afin de pouvoir ensuite les associer à un environnement de pipeline. Les urls peuvent être générés aléatoirement (donc pas nécéssairement reliées au terme `e-baie` ou `glo2003`).
 
-### 4.2 - Configuration Heroku
+:warning: :scroll: Dans votre fichier `tp3.md`, insérez une capture d'écran de votre pipeline Heroku. Vous pouvez brouiller ou cacher les adresses courriels si vous voulez.
+
+### 4.2 - Configuration
 
 Avant de pouvoir déployer sur Heroku, quelques étapes de configuration sont nécessaires. Ces dernières sont bien décrites sur le [Heroku Dev Center](https://devcenter.heroku.com/articles/deploying-java).
 
-### 4.3 - Déploiement automatisé sur Heroku
+### 4.3 - Déploiement automatisé
 
 Votre application doit être déployée sur Heroku de façon automatique lorsque le code est intégré à la branche de base (`main`). Ainsi, vous devrez créer un nouveau workflow avec **au moins** les `jobs` suivantes:
 
@@ -77,18 +86,16 @@ Votre application doit être déployée sur Heroku de façon automatique lorsque
 
 Vous devriez donc avoir les 2 `workflows` suivants:
 
-1. `test`, `CI` ou `build` qui exécute les tests au `push` sur toutes les branches, excepté la branche `main`.
-2. `deploy` qui exécute les tests, puis ensuite le déploiement au `push` sur la branche `main` seulement.
+1. `test`, `CI` ou `build` : exécute les tests au `push` sur toutes les branches, excepté la branche `main`.
+2. `deploy` : exécute les tests, puis ensuite le déploiement au `push` sur la branche `main` seulement.
 
 ### 4.4 - Pour la correction
 
-1. Assurez-vous de créer un fichier `config/heroku_urls.json` avec la structure suivantes (sans les chevrons):
+Assurez-vous de créer un fichier `config/heroku_urls.json` avec la structure suivantes (sans les chevrons):
 
-   ```json
-   {
-     "staging": "<url vers l'app en staging>",
-     "production": "<url vers l'app en production>"
-   }
-   ```
-
-2. :scroll: Dans votre fichier `tp3.md`, insérez une capture d'écran de votre pipeline Heroku. Vous pouvez brouiller ou cacher les adresses courriels si vous voulez.
+```json
+{
+  "staging": "<url vers l'app en staging>",
+  "production": "<url vers l'app en production>"
+}
+```
