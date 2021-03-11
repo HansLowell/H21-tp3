@@ -6,9 +6,9 @@ En tant qu'utilisateur du service, je peux me créer un compte acheteur.
 
 ## Critères de succès
 
-| critère | description                     |
-| ------- | ------------------------------- |
-| C1      | L'utilisateur doit avoir 18 ans |
+| critère | description                  |
+| ------- | ---------------------------- |
+| C1      | L'acheteur doit avoir 18 ans |
 
 ## Requête
 
