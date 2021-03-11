@@ -2,7 +2,7 @@
 
 ## Description
 
-En temps que développeur, je veux encapsuler certains types primitifs dans des Value objects afin de m'éviter une dette technique future.
+En temps que gestionnaire de projet, je veux que certains types primitifs soient encapsulés dans des Value objects afin d'éviter une dette technique.
 
 ## Critères de succès
 
